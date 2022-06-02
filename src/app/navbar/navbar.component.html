@@ -1,30 +1,29 @@
-<header
-  class="flex justify-between items-center py-6 px-4 bg-gray-900 text-white"
->
-  <a class="text-xl font-bold">Angular Social</a>
-  <nav>
-    <ul *ngIf="userService.isConnected" class="flex">
-      <li class="px-3">
-        <a class="hover:underline" routerLink="utilisateurs">Users</a>
-      </li>
-      <li class="px-3">
-        <a class="hover:underline" routerLink="articles">Articles</a>
-      </li>
-      <li class="px-3">
-        <button (click)="logOut()">Déconnexion</button>
-      </li>
-    </ul>
-    <ul
-      class="flex justify-center items-center"
-      *ngIf="!userService.isConnected"
-    >
-      <li class="px-3">
-        <a class="hover:underline" routerLink="/">Connexion</a>
-      </li>
-      <li class="px-3">
-        <a class="hover:underline" routerLink="/inscription">Inscription</a>
-      </li>
-    </ul>
-  </nav>
-</header>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-md">
+    <a class="navbar-brand">Angular Social</a>
+  </div>
+
+  <!--
+     *                          *
+     * If user is connected     *
+     *                          *
+   -->
+
+  <div *ngIf="userService.isConnected">
+    <button type="button" class="btn btn-dark" routerLink="utilisateurs">Liste des utilisateurs</button>
+    <button type="button" class="btn btn-dark" routerLink="articles">Liste des articles</button>
+    <button type="button" class="btn btn-dark" (click)="logOut()">Déconnexion</button>
+  </div>
+
+  <!--
+      *                          *
+      * If user is not connected *
+      *                          *
+    -->
+
+  <div *ngIf="!userService.isConnected">
+    <button type="button" class="btn btn-dark" routerLink="/">Connexion</button>
+    <button type="button" class="btn btn-dark" routerLink="inscription">Inscription</button>
+  </div>
+</nav>
 

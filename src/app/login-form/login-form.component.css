@@ -3,5 +3,10 @@ button {
 }
 
 form {
-  margin-bottom: 200px;
+  margin-left: 700px;
+  margin-top: 200px;
+}
+
+input {
+  width: 40%;
 }
