@@ -1,1 +1,30 @@
-<p>navbar works!</p>
+<header
+  class="flex justify-between items-center py-6 px-4 bg-gray-900 text-white"
+>
+  <a class="text-xl font-bold">Angular Social</a>
+  <nav>
+    <ul *ngIf="userService.isConnected" class="flex">
+      <li class="px-3">
+        <a class="hover:underline" routerLink="utilisateurs">Users</a>
+      </li>
+      <li class="px-3">
+        <a class="hover:underline" routerLink="articles">Articles</a>
+      </li>
+      <li class="px-3">
+        <button (click)="logOut()">Déconnexion</button>
+      </li>
+    </ul>
+    <ul
+      class="flex justify-center items-center"
+      *ngIf="!userService.isConnected"
+    >
+      <li class="px-3">
+        <a class="hover:underline" routerLink="/">Connexion</a>
+      </li>
+      <li class="px-3">
+        <a class="hover:underline" routerLink="/inscription">Inscription</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+

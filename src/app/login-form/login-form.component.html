@@ -1,0 +1,18 @@
+<form class="bg-gray-900 p-4 rounded w-full" [formGroup]="loginForm" (ngSubmit)="ngLogin()">
+  <div>
+    <label class="block text-slate-50" for="email">Email</label>
+    <input class="py-1 px-3 bg-slate-200 my-3 rounded w-full" formControlName="email" type="text" id="email"/>
+  </div>
+  <div>
+    <label class="block text-slate-50" for="password">Password</label>
+    <input class="py-1 px-3 bg-slate-200 my-3 rounded w-full" type="text" formControlName="password" id="password"/>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <button
+      class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+      Connexion
+    </button>
+  </div>
+</form>
+
