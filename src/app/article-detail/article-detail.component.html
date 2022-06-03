@@ -17,9 +17,6 @@
     </div>
   </div>
 
-    <app-comment-form
-      (emitComment)="pushComment($event)"
-      [id_article]="article.id_article"
-    ></app-comment-form>
+  <app-comment-form (emitComment)="pushComment($event)" [id_article]="article.id_article"></app-comment-form>
 
 </div>

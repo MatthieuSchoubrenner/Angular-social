@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserObject, TokenObject } from './interfaces';
-import { JwtTokenService } from './jwt-token.service';
+import {Injectable} from '@angular/core';
+import {Observable, tap} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserObject, TokenObject} from './interfaces';
+import {JwtTokenService} from './jwt-token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,7 @@ export class UserService {
     return this.http
       .post<TokenObject>(
         this.urlBase + '/connect',
-        { email, password },
+        {email, password},
         this.httpOptions
       )
       .pipe(tap((token: TokenObject) => token));
@@ -54,16 +54,11 @@ export class UserService {
     return this.http
       .post<UserObject>(
         this.urlBase,
-        { pseudo, email, password, avatar },
+        {pseudo, email, password, avatar},
         this.httpOptions
       )
       .pipe(tap((data: UserObject) => data));
   }
-
-  getIsConnected(): boolean {
-    return this.isConnected;
-  }
-
   setIsConnected(bool: boolean) {
     if (bool) {
       this.isConnected = !this.isConnected;

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { JwtTokenService } from '../jwt-token.service';
-import { UserService } from '../user.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
+import {JwtTokenService} from '../jwt-token.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,14 +14,18 @@ export class LoginFormComponent implements OnInit {
     email: '',
     password: '',
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private tokenService: JwtTokenService,
     private router: Router
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   ngLogin() {
     const that = this;
     this.userService

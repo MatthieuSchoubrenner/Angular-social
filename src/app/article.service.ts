@@ -3,10 +3,10 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError, Observable, tap } from 'rxjs';
-import { ArticleObject, CommentObject } from './interfaces/index';
-import { JwtTokenService } from './jwt-token.service';
+import {Injectable} from '@angular/core';
+import {Observable, tap} from 'rxjs';
+import {ArticleObject, CommentObject} from './interfaces/index';
+import {JwtTokenService} from './jwt-token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +19,12 @@ export class ArticleService {
       Authorization: 'Bearer' + ' ' + this.tokenService.getToken(),
     }),
   };
+
   constructor(
     private http: HttpClient,
     private tokenService: JwtTokenService
-  ) {}
+  ) {
+  }
 
   getAllArticle(): Observable<Array<ArticleObject>> {
     const token = this.tokenService.getToken();
@@ -31,6 +33,7 @@ export class ArticleService {
       .get<Array<ArticleObject>>(this.urlBase, this.httpOptions)
       .pipe(tap((allArticle: Array<ArticleObject>) => allArticle));
   }
+
   getOneArticle(id: string): Observable<ArticleObject> {
     return this.http
       .get<ArticleObject>(`${this.urlBase}/${id}`, this.httpOptions)
@@ -39,18 +42,20 @@ export class ArticleService {
 
   postOne(contenu: string, titre: string): Observable<ArticleObject> {
     return this.http
-      .post<ArticleObject>(this.urlBase, { titre, contenu }, this.httpOptions)
+      .post<ArticleObject>(this.urlBase, {titre, contenu}, this.httpOptions)
       .pipe(tap((article: ArticleObject) => article));
   }
+
   postComment(id_article: number, contenu: string): Observable<CommentObject> {
     return this.http
       .post<CommentObject>(
         `https://reseau.jdedev.fr/api/comment`,
-        { idArt: id_article, contenu },
+        {idArt: id_article, contenu},
         this.httpOptions
       )
       .pipe(tap((comment: CommentObject) => comment));
   }
+
   updateOne(
     id: number,
     contenu: string,
@@ -59,12 +64,15 @@ export class ArticleService {
     return this.http
       .put<ArticleObject>(
         `${this.urlBase}/${id}`,
-        { titre, contenu },
+        {titre, contenu},
         this.httpOptions
       )
       .pipe(tap((article: ArticleObject) => article));
   }
-  private handleErrors(error: HttpErrorResponse) {}
+
+  private handleErrors(error: HttpErrorResponse) {
+  }
+
   getAllcomments(id: string): Observable<Array<CommentObject>> {
     return this.http
       .get<Array<CommentObject>>(

@@ -2,6 +2,7 @@ export interface LoginUser {
   email: string;
   password: string;
 }
+
 export interface CommentObject {
   id_commentaire: number;
   contenu: string;

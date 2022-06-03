@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -16,11 +16,14 @@ export class RegisterFormComponent implements OnInit {
     password: '' as string,
     password_confirm: '' as string,
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+  }
+
   ngRegister() {
     const data = this.registerForm.value;
     this.userService
@@ -28,5 +31,7 @@ export class RegisterFormComponent implements OnInit {
       .subscribe((data) => console.log(data));
     this.router.navigate(['/']);
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+  }
 }

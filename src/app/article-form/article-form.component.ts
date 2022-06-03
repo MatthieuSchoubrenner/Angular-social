@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ArticleService } from '../article.service';
-import { ArticleObject } from '../interfaces';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {ArticleService} from '../article.service';
+import {ArticleObject} from '../interfaces';
 
 @Component({
   selector: 'app-article-form',
@@ -19,7 +19,8 @@ export class ArticleFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private articleService: ArticleService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     if (this.article) {
@@ -29,6 +30,7 @@ export class ArticleFormComponent implements OnInit {
       });
     }
   }
+
   ngPost() {
     const that = this;
     if (this.article) {

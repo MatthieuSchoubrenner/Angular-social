@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ArticleObject } from '../interfaces/index';
-import { ArticleComponent } from '../article/article.component';
-import { ArticleService } from '../article.service';
+import {Component, OnInit} from '@angular/core';
+import {ArticleObject} from '../interfaces/index';
+import {ArticleService} from '../article.service';
+
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -11,13 +11,14 @@ export class ArticlesComponent implements OnInit {
   articles?: Array<ArticleObject>;
 
   constructor(public articleService: ArticleService) {
-    // fetch all users
     this.articleService
       .getAllArticle()
       .subscribe((data) => (this.articles = data));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   pushArticle($event: any) {
     this.articles?.unshift($event);
   }

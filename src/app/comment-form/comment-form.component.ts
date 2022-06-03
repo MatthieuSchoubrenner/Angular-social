@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ArticleService } from '../article.service';
-import { CommentObject } from '../interfaces';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {ArticleService} from '../article.service';
+import {CommentObject} from '../interfaces';
 
 @Component({
   selector: 'app-comment-form',
@@ -14,12 +14,16 @@ export class CommentFormComponent implements OnInit {
   commentForm = this.formBuilder.group({
     contenu: '',
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private articleService: ArticleService
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   ngComment() {
     const that = this;
     this.articleService

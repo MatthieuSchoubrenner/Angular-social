@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import { ArticleService } from '../article.service';
-import { ArticleObject, CommentObject } from '../interfaces';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ArticleService} from '../article.service';
+import {ArticleObject, CommentObject} from '../interfaces';
+
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -15,7 +16,8 @@ export class ArticleDetailComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -29,6 +31,7 @@ export class ArticleDetailComponent implements OnInit {
         .subscribe((data) => (this.comments = data));
     }
   }
+
   pushComment($event: any) {
     this.comments?.unshift($event);
   }
